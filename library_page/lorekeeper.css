@@ -1,0 +1,279 @@
+:root {
+  --lorekeeper-width: 296px;
+}
+
+.lorekeeper-panel[hidden], .lorekeeper-launch[hidden], .lorekeeper-panel [hidden] {
+  display: none;
+}
+
+.lorekeeper-panel {
+  position: fixed;
+  z-index: 5;
+  inset-inline-end: 14px;
+  inset-block-end: 14px;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(340px, calc(100% - 28px));
+  height: min(600px, calc(100vh - var(--dashboard-header-height, 64px) - 28px));
+  height: min(600px, calc(100dvh - var(--dashboard-header-height, 64px) - 28px));
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line, #dcd8c8);
+  border-radius: 14px;
+  background: var(--base, #f4f1e8);
+  color: var(--ink, #232923);
+  box-shadow: 0 12px 38px #17292235;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.lorekeeper-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #cdb881;
+  background: var(--green-dark, #172922);
+  color: #fff8e7;
+}
+
+.lorekeeper-header h2 {
+  margin: 0;
+  font: 650 24px/1.15 var(--serif, Georgia);
+}
+
+.lorekeeper-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.lorekeeper-launch, .lorekeeper-panel button {
+  border: 1px solid transparent;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.lorekeeper-panel button:disabled {
+  opacity: .65;
+  cursor: default;
+}
+
+.lorekeeper-panel :is(button, textarea, a, [tabindex]):focus-visible,
+.lorekeeper-launch:focus-visible {
+  outline: 2px solid #a46d25;
+  outline-offset: 2px;
+}
+
+.lorekeeper-panel .lorekeeper-quiet, .lorekeeper-panel .lorekeeper-close {
+  min-height: 36px;
+  padding: 4px 8px;
+  background: transparent;
+  color: inherit;
+}
+
+.lorekeeper-panel .lorekeeper-close {
+  min-width: 36px;
+  border-color: #ffffff44;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.lorekeeper-panel :is(.lorekeeper-quiet, .lorekeeper-close):hover:not(:disabled) {
+  background: #ffffff19;
+}
+
+.lorekeeper-transcript {
+  display: grid;
+  align-content: start;
+  gap: 15px;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior-y: contain;
+  padding: 14px;
+  scrollbar-gutter: stable;
+}
+
+.lorekeeper-intro {
+  margin: 0;
+  border-inline-start: 2px solid var(--gold, #b99148);
+  padding: 4px 0 4px 10px;
+  color: var(--muted, #556052);
+}
+
+.lorekeeper-turn {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+}
+
+.lorekeeper-user, .lorekeeper-reply {
+  max-width: 100%;
+  margin: 0;
+  border-radius: 9px;
+  padding: 8px 10px;
+  overflow-wrap: anywhere;
+}
+
+.lorekeeper-user {
+  justify-self: end;
+  background: var(--green, #21382e);
+  color: #fffdf7;
+  white-space: pre-wrap;
+}
+
+.lorekeeper-reply {
+  border: 1px solid var(--line, #dcd8c8);
+  background: var(--surface, #fffdf7);
+}
+
+.lorekeeper-mode {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--muted, #556052);
+  font-size: 12px;
+}
+
+.lorekeeper-answer {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.lorekeeper-sources {
+  display: grid;
+  gap: 3px;
+  margin: 9px 0 0;
+  border-top: 1px solid var(--line, #dcd8c8);
+  padding: 6px 0 0 16px;
+  font-size: 13px;
+}
+
+.lorekeeper-sources a {
+  color: #2c5949;
+  text-underline-offset: .15em;
+}
+
+.lorekeeper-form {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 10px 14px 14px;
+  border-top: 1px solid var(--line, #dcd8c8);
+  background: var(--surface, #fffdf7);
+}
+
+.lorekeeper-form label {
+  color: var(--green, #21382e);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.lorekeeper-keyboard-hint {
+  margin: 0;
+  color: var(--muted, #556052);
+  font-size: 11px;
+}
+
+.lorekeeper-question {
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 28dvh;
+  resize: vertical;
+  border: 1px solid #a9ad9a;
+  border-radius: 8px;
+  padding: 7px 8px;
+  background: #fffefa;
+  color: var(--ink, #232923);
+  font: inherit;
+}
+
+.lorekeeper-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.lorekeeper-status {
+  margin: 0;
+  color: var(--muted, #556052);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.lorekeeper-panel .lorekeeper-submit, .lorekeeper-launch {
+  min-height: 40px;
+  padding: 8px 14px;
+  background: var(--green, #21382e);
+  color: #fff8e7;
+  white-space: nowrap;
+}
+
+.lorekeeper-panel .lorekeeper-submit:hover:not(:disabled), .lorekeeper-launch:hover {
+  background: #2e503f;
+}
+
+.lorekeeper-launch {
+  position: fixed;
+  z-index: 5;
+  inset-inline-end: 14px;
+  inset-block-end: 14px;
+  border-color: #a58a53;
+  box-shadow: 0 4px 18px #1729222e;
+}
+
+@media (min-width: 1220px) {
+  body.lorekeeper-docked {
+    padding-inline-end: var(--lorekeeper-width);
+  }
+
+  .lorekeeper-panel {
+    inset: 0 0 0 auto;
+    width: var(--lorekeeper-width);
+    height: auto;
+    border-width: 0 0 0 1px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+}
+
+@media (1220px <= width <= 1376px) {
+  .lorekeeper-docked .keep-board {
+    grid-template: "map party" auto "place party" auto / minmax(0, 1fr) minmax(180px, .38fr);
+  }
+
+  .lorekeeper-docked .map-panel {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (1220px <= width <= 1230px) {
+  .lorekeeper-docked .combat-board {
+    grid-template-columns: minmax(200px, .8fr) minmax(240px, 1fr);
+  }
+
+  .lorekeeper-docked .combat-resolution { grid-column: 2; }
+  .lorekeeper-docked .combat-order { grid-row: span 2; }
+}
+
+@media (max-width: 420px) {
+  .lorekeeper-panel, .lorekeeper-launch {
+    inset-inline-end: 8px;
+    inset-block-end: 8px;
+  }
+
+  .lorekeeper-panel {
+    width: calc(100% - 16px);
+    height: calc(100dvh - var(--dashboard-header-height, 64px) - 16px);
+  }
+
+  .lorekeeper-question { font-size: 16px; }
+}

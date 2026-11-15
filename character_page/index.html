@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Characters · Borderlands</title>
+  <link rel="stylesheet" href="styles.css?v=dashboard-tabs">
+  <link rel="stylesheet" href="../library_page/lorekeeper.css?v=dashboard-tabs">
+  <script defer src="dashboard-nav.js"></script>
+  <script defer src="../library_page/lorekeeper.js?v=lorekeeper-voice"></script>
+  <script defer src="classes.js"></script>
+  <script defer src="../api/level-data.js"></script>
+  <script defer src="levels.js"></script>
+  <script defer src="origins.js"></script>
+  <script defer src="items-spells.js"></script>
+  <script defer src="adventure-catalog.js"></script>
+  <script defer src="session-state.js"></script>
+  <script defer src="character.js"></script>
+  <script defer src="storage.js?v=combat-v1"></script>
+  <script defer src="dashboard-controls.js?v=combat-v1"></script>
+  <script defer src="sheet-ui.js"></script>
+  <script defer src="../combat_page/engine.js"></script>
+  <script defer src="app.js?v=party-actions"></script>
+</head>
+<body>
+  <header class="masthead" data-dashboard-page="characters"></header>
+
+  <main class="shell">
+    <section id="roster" aria-labelledby="roster-title">
+      <div class="roster-hero">
+        <div>
+          <p class="eyebrow">Heroes of the Borderlands</p>
+          <h1 id="roster-title" tabindex="-1">Characters</h1>
+          <p>Choose a class, background and species to build a starter character.</p>
+        </div>
+      </div>
+      <details class="adventure-settings">
+        <summary>Adventure settings</summary>
+        <div class="adventure-reset-controls">
+          <button class="secondary" type="button" data-dashboard-reset="resetAdventure" disabled>Reset adventure</button>
+          <button class="secondary danger-text" type="button" data-dashboard-reset="resetEverything" disabled>Reset everything</button>
+        </div>
+      </details>
+      <div class="roster-heading">
+        <div class="roster-heading-title">
+          <h2>Party roster</h2>
+          <span id="roster-count"></span>
+        </div>
+        <form id="player-count-form">
+          <label for="player-count">Player count</label>
+          <select id="player-count" name="player-count" disabled>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+          <button id="apply-player-count" class="secondary" type="submit" disabled>Apply</button>
+        </form>
+      </div>
+      <p id="roster-status" class="status" role="status"></p>
+      <div id="slot"></div>
+      <details id="rubbish-bin">
+        <summary>
+          <span>Rubbish Bin</span>
+          <span id="archive-count"></span>
+        </summary>
+        <div id="archive-list"></div>
+      </details>
+      <div class="save-controls">
+        <button id="export-save" class="text-button" type="button" hidden>Export save</button>
+        <button id="import-save" class="text-button" type="button" disabled>Import save</button>
+        <input id="import-file" type="file" accept=".json,application/json" hidden>
+      </div>
+    </section>
+
+    <dialog id="roster-confirm" aria-labelledby="confirm-title" aria-describedby="confirm-message">
+      <h2 id="confirm-title"></h2>
+      <p id="confirm-message"></p>
+      <form method="dialog" class="dialog-actions">
+        <button class="secondary" type="submit" value="cancel" autofocus>Cancel</button>
+        <button id="confirm-action" class="primary" type="submit" value="confirm">Confirm</button>
+      </form>
+    </dialog>
+
+    <dialog id="level-up-dialog" class="level-up-dialog" aria-labelledby="level-up-title">
+      <h2 id="level-up-title"></h2>
+      <p id="level-up-rules"></p>
+      <div id="level-up-subclass-wrap"><label id="level-up-subclass-label" for="level-up-subclass">Subclass</label><select id="level-up-subclass"></select></div>
+      <div id="level-up-preview"></div>
+      <form method="dialog" class="dialog-actions">
+        <button id="level-up-cancel" class="secondary" type="submit" value="cancel" autofocus>Cancel</button>
+        <button id="level-up-confirm" class="primary" type="submit" value="confirm">Level Up</button>
+      </form>
+    </dialog>
+
+    <section id="editor" aria-labelledby="editor-title" hidden>
+      <form id="character-form">
+        <div class="editor-heading">
+          <div>
+            <button id="cancel" class="text-button" type="button"><span aria-hidden="true">←</span> Characters</button>
+            <p id="editor-slot" class="slot-number"></p>
+            <h1 id="editor-title" tabindex="-1">Create character</h1>
+          </div>
+          <div class="editor-actions">
+            <button id="restore-defaults" class="secondary" type="button" disabled>Restore defaults</button>
+            <button id="save-character" class="primary" type="submit">Save &amp; close</button>
+          </div>
+        </div>
+        <p id="form-status" class="status error" role="alert" tabindex="-1" hidden></p>
+        <p id="editor-notice" class="status" role="status" hidden></p>
+        <div class="editor-layout">
+          <section class="panel setup" aria-labelledby="setup-title">
+            <div class="panel-heading">
+              <h2 id="setup-title">Character setup</h2>
+              <span id="character-level-label" class="level-tag">Level 1</span>
+            </div>
+            <label for="character-name">Character name</label>
+            <input id="character-name" name="character-name" maxlength="60" placeholder="Optional" autocomplete="off">
+            <div class="select-grid">
+              <div><label for="class-choice">Class</label><select id="class-choice" required></select></div>
+              <div><label for="background-choice">Background</label><select id="background-choice" required></select></div>
+              <div><label for="species-choice">Species</label><select id="species-choice" required></select></div>
+            </div>
+            <fieldset id="prepared-section" hidden>
+              <legend>Starting Wizard spells</legend>
+              <p id="prepared-count" class="muted"></p>
+              <div id="prepared-options" class="prepared-options"></div>
+            </fieldset>
+          </section>
+          <aside id="summary" class="panel summary" aria-label="Character stats"></aside>
+          <div id="details" class="details" aria-label="Character reference"></div>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

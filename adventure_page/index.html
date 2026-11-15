@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../library_page/lorekeeper.css?v=dashboard-tabs">
+  <script defer src="../library_page/lorekeeper.js?v=lorekeeper-voice"></script>
+  <title>Adventure maps · Borderlands</title>
+  <link rel="stylesheet" href="../character_page/styles.css?v=dashboard-tabs">
+  <script defer src="../character_page/dashboard-nav.js"></script>
+  <link rel="stylesheet" href="../keep_page/keep.css?v=dashboard-tabs">
+  <link rel="stylesheet" href="maps.css">
+  <link rel="stylesheet" href="hazards.css?v=adventure-effects">
+  <script defer src="../adventure_page/private-config.js"></script>
+  <script defer src="../character_page/classes.js"></script>
+  <script defer src="../api/level-data.js"></script>
+  <script defer src="../character_page/levels.js"></script>
+  <script defer src="../character_page/origins.js"></script>
+  <script defer src="../character_page/items-spells.js"></script>
+  <script defer src="../character_page/adventure-catalog.js"></script>
+  <script defer src="../character_page/character.js"></script>
+  <script defer src="../character_page/storage.js?v=combat-v1"></script>
+  <script defer src="../character_page/dashboard-controls.js?v=combat-v1"></script>
+  <script defer src="../keep_page/content.js?v=adventure-maps"></script>
+  <script defer src="wilderness.js"></script>
+  <script defer src="caves-early.js?v=combat-roster"></script>
+  <script defer src="caves-late.js"></script>
+  <script defer src="../combat_page/handoff.js?v=combat-roster"></script>
+  <script defer src="../combat_page/engine.js?v=adventure-effects"></script>
+  <script defer src="../character_page/session-state.js?v=adventure-effects"></script>
+  <script defer src="hazards.js?v=adventure-effects"></script>
+  <script defer src="../combat_page/monsters-fixed.js?v=adventure-effects"></script>
+  <script defer src="../combat_page/monsters-ordinary.js?v=adventure-effects"></script>
+  <script defer src="companions.js?v=adventure-effects"></script>
+  <script defer src="intro.js"></script>
+  <script defer src="maps.js?v=story-mode"></script>
+</head>
+<body>
+  <header class="masthead" data-dashboard-page="maps"></header>
+  <main class="keep-shell">
+    <header class="keep-header map-header">
+      <div>
+        <a id="parent-map" class="map-back" href="./?map=wilderness" hidden></a>
+        <h1 id="map-title">Adventure maps</h1>
+      </div>
+      <div class="keep-actions">
+        <label class="map-picker">Map <select id="map-select" aria-label="Choose a map"></select></label>
+        <button id="core-encounter" class="secondary" type="button" hidden>Regional encounter (d4)</button>
+        <button id="random-encounter" class="secondary" type="button" hidden>Random encounter (d8)</button>
+      </div>
+    </header>
+    <p id="map-status" class="status keep-status" role="status" hidden></p>
+    <div class="keep-board">
+      <section class="map-panel" aria-label="Map and locations">
+        <div class="map-image">
+          <img id="map-art" alt="">
+          <div id="map-pins" class="map-pins"></div>
+        </div>
+        <nav id="point-list" class="place-list" aria-label="Map locations"></nav>
+        <div id="map-source" class="keep-links"></div>
+      </section>
+      <section id="point-panel" class="keep-panel place-panel" aria-label="Selected location"></section>
+      <aside class="keep-panel party-panel" aria-labelledby="party-title">
+        <h2 id="party-title">Party</h2>
+        <p id="party-caption" class="muted">Loading roster…</p>
+        <div id="party-list" class="buyer-list"></div>
+        <div id="cave-progress"></div>
+        <details class="side-details"><summary>Adventure log</summary><ol id="map-log" class="keep-log"></ol></details>
+      </aside>
+    </div>
+  </main>
+  <dialog id="map-dialog" class="keep-dialog" aria-labelledby="map-dialog-title">
+    <form id="map-form">
+      <header class="checkout-head"><h2 id="map-dialog-title"></h2></header>
+      <div id="map-fields" class="checkout-fields"></div>
+      <p id="map-dialog-error" class="checkout-preview error" role="alert" hidden></p>
+      <footer class="checkout-footer">
+        <button id="map-cancel" class="secondary" type="button">Cancel</button>
+        <button id="map-confirm" class="primary" type="submit">Confirm</button>
+      </footer>
+    </form>
+  </dialog>
+</body>
+</html>

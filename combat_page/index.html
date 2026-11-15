@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Combat · Borderlands</title>
+  <link rel="stylesheet" href="../character_page/styles.css?v=dashboard-tabs">
+  <link rel="stylesheet" href="combat.css?v=dashboard-tabs">
+  <link rel="stylesheet" href="../library_page/lorekeeper.css?v=dashboard-tabs">
+  <script defer src="../character_page/dashboard-nav.js"></script>
+  <script defer src="../library_page/lorekeeper.js?v=lorekeeper-voice"></script>
+  <script defer src="../character_page/classes.js"></script>
+  <script defer src="../character_page/origins.js"></script>
+  <script defer src="../character_page/items-spells.js"></script>
+  <script defer src="../character_page/adventure-catalog.js"></script>
+  <script defer src="../api/level-data.js"></script>
+  <script defer src="../character_page/levels.js"></script>
+  <script defer src="../character_page/session-state.js"></script>
+  <script defer src="../character_page/character.js"></script>
+  <script defer src="../character_page/storage.js?v=1.0"></script>
+  <script defer src="../character_page/dashboard-controls.js?v=combat-v1"></script>
+  <script defer src="handoff.js?v=combat-roster"></script>
+  <script defer src="monsters-fixed.js?v=combat-roster"></script>
+  <script defer src="monsters-ordinary.js?v=story-mode"></script>
+  <script defer src="actions.js?v=combat-roster"></script>
+  <script defer src="engine.js?v=combat-roster"></script>
+  <script defer src="details.js?v=combat-details"></script>
+  <script defer src="combat.js?v=story-mode"></script>
+</head>
+<body>
+  <header class="masthead" data-dashboard-page="combat"></header>
+  <main class="combat-shell combat-main">
+    <header class="combat-header">
+      <div>
+        <h1 id="combat-heading">Combat</h1>
+        <div id="combat-source" class="combat-source"></div>
+      </div>
+      <div id="combat-end" class="combat-toolbar"></div>
+    </header>
+    <p id="combat-status" class="status" role="status">Loading combat…</p>
+    <section id="combat-setup" class="panel combat-panel combat-phase" aria-label="Combat setup" hidden></section>
+    <section id="combat-initiative" class="panel combat-panel combat-phase" aria-label="Initiative rolls" hidden></section>
+    <div id="combat-fight" class="combat-board" hidden>
+      <section id="combat-participants" class="panel combat-panel combat-order" aria-label="Combatants and turn order"></section>
+      <section id="combat-actions" class="panel combat-panel" aria-label="Selected combatant and actions"></section>
+      <section id="combat-workflow" class="panel combat-panel combat-resolution" aria-label="Resolve an action"></section>
+    </div>
+    <details class="panel combat-log" open>
+      <summary>Combat log</summary>
+      <div id="combat-log"><p class="combat-empty">Dice and resolved actions appear here.</p></div>
+    </details>
+  </main>
+  <dialog id="combat-details-dialog" class="combat-dialog combat-details-dialog" aria-labelledby="combat-details-title">
+    <header class="combat-details-header">
+      <h2 id="combat-details-title">Combat details</h2>
+      <div class="combat-toolbar">
+        <button id="combat-details-expand" class="secondary" type="button" data-cmd="details-expand" aria-pressed="false">Expand window</button>
+        <button id="combat-details-close" class="secondary" type="button" data-cmd="details-close" autofocus>Close</button>
+      </div>
+    </header>
+    <div id="combat-details-content" class="combat-details-content"></div>
+  </dialog>
+</body>
+</html>

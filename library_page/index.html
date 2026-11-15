@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Library · Borderlands</title>
+  <link rel="stylesheet" href="/character_page/styles.css?v=dashboard-tabs">
+  <link rel="stylesheet" href="/library_page/library.css?v=dashboard-tabs">
+  <link rel="stylesheet" href="/library_page/lorekeeper.css?v=dashboard-tabs">
+  <script defer src="/character_page/dashboard-nav.js"></script>
+  <script defer src="/library_page/library.js?v=library-v1"></script>
+  <script defer src="/library_page/lorekeeper.js?v=lorekeeper-voice"></script>
+</head>
+<body class="library-page">
+  <header class="masthead" data-dashboard-page="library"></header>
+  <main class="library-shell library-main">
+    <header class="library-heading">
+      <div>
+        <h1 id="library-title">Library</h1>
+        <p id="library-description">Browse the local campaign records and source pages.</p>
+      </div>
+      <form id="library-search" role="search">
+        <label id="library-search-label" for="library-query">Search library</label>
+        <div class="library-search-controls">
+          <input id="library-query" name="q" type="search" maxlength="160" autocomplete="off"
+            placeholder="Try “Giant Spider” or “Bonus Action”">
+          <button class="primary" id="library-submit" type="submit">Search</button>
+        </div>
+      </form>
+    </header>
+
+    <div class="library-board">
+      <nav class="library-panel library-categories" aria-labelledby="library-category-heading">
+        <h2 id="library-category-heading">Categories</h2>
+        <div id="library-categories"></div>
+      </nav>
+      <section class="library-panel library-results" aria-labelledby="library-results-heading">
+        <header class="library-panel-heading">
+          <h2 id="library-results-heading">All records</h2>
+          <p id="library-status" class="status" role="status">Loading records…</p>
+        </header>
+        <ul id="library-results"></ul>
+      </section>
+      <article class="library-panel library-reader" id="library-reader" aria-labelledby="library-record-heading" tabindex="-1">
+        <h2 id="library-record-heading">Choose a record</h2>
+        <p>Open a record to read its details and sources.</p>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

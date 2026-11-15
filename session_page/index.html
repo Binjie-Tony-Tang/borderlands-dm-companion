@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Party actions · Borderlands</title>
+  <link rel="stylesheet" href="../character_page/styles.css?v=dashboard-tabs"><link rel="stylesheet" href="styles.css?v=party-rest">
+  <link rel="stylesheet" href="../library_page/lorekeeper.css?v=dashboard-tabs">
+  <script defer src="../character_page/dashboard-nav.js"></script>
+  <script defer src="../library_page/lorekeeper.js?v=lorekeeper-voice"></script>
+  <script defer src="../character_page/classes.js"></script><script defer src="../api/level-data.js"></script>
+  <script defer src="../character_page/levels.js"></script>
+  <script defer src="../character_page/origins.js"></script><script defer src="../character_page/items-spells.js"></script>
+  <script defer src="../character_page/adventure-catalog.js"></script><script defer src="../character_page/session-state.js"></script>
+  <script defer src="../character_page/character.js"></script><script defer src="../character_page/storage.js"></script>
+  <script defer src="../character_page/dashboard-controls.js"></script><script defer src="../combat_page/monsters-fixed.js"></script>
+  <script defer src="../combat_page/monsters-ordinary.js"></script><script defer src="../combat_page/actions.js"></script>
+  <script defer src="../combat_page/engine.js"></script>
+  <script defer src="../character_page/party-rest.js?v=table-time"></script><script defer src="party-rest-ui.js"></script>
+  <script defer src="app.js?v=party-rest"></script>
+</head>
+<body>
+  <header class="masthead" data-dashboard-page="party"></header>
+  <main class="shell session-main">
+    <h1 id="heading">Party actions</h1><p id="intro"></p>
+    <p id="status" class="status" role="status">Loading…</p>
+    <p id="active-fight" class="status" hidden></p>
+    <div id="session-content">
+      <section id="party-rest" class="panel party-rest" aria-labelledby="party-rest-title">
+        <div>
+          <h2 id="party-rest-title">Party rest</h2>
+          <p id="party-rest-hint">Preview HP and Power Token recovery for the saved party.</p>
+        </div>
+        <div class="party-rest-actions">
+          <button id="short-rest" class="secondary" type="button" disabled>Short Rest</button>
+          <button id="long-rest" class="secondary" type="button" disabled>Long Rest</button>
+        </div>
+      </section>
+      <section id="pending-panel" class="panel" hidden></section>
+      <div class="session-grid"><section id="party-panel" class="panel"></section><section id="action-panel" class="panel"></section></div>
+      <section id="companion-panel" class="panel"></section>
+    </div>
+    <dialog id="party-rest-dialog" aria-labelledby="rest-title" aria-describedby="rest-rules">
+      <h2 id="rest-title"></h2>
+      <p id="rest-rules"></p>
+      <div id="rest-preview"></div>
+      <p id="rest-reminders" class="muted"></p>
+      <p><a id="rest-source" href="../library_page/?record=rules%3Ashort-and-long-rest" target="_blank" rel="noopener">Rest rules ↗</a></p>
+      <form method="dialog" class="dialog-actions">
+        <button id="rest-cancel" class="secondary" type="submit" value="cancel" autofocus>Cancel</button>
+        <button id="rest-confirm" class="primary" type="submit" value="confirm">Apply completed rest</button>
+      </form>
+    </dialog>
+    <dialog id="workflow" aria-labelledby="workflow-title"><h2 id="workflow-title"></h2><div id="workflow-body"></div></dialog>
+  </main>
+</body>
+</html>

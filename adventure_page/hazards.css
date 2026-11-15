@@ -1,0 +1,14 @@
+.hazard-dialog { width: min(850px, calc(100vw - 2rem)); max-height: 90vh; }
+.hazard-dialog form { display: grid; gap: 1rem; }
+.hazard-dialog h2, .hazard-dialog p { margin: 0; }
+.hazard-dialog label { display: grid; gap: .35rem; }
+.hazard-dialog input, .hazard-dialog select { width: 100%; min-width: 0; }
+.hazard-targets { display: grid; gap: .8rem; }
+.hazard-targets fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; border: 1px solid var(--line, #d8d4c4); border-radius: .6rem; }
+.hazard-targets legend label { display: flex; align-items: center; gap: .5rem; }
+.hazard-targets input[type="checkbox"] { width: auto; }
+.hazard-preview { display: grid; gap: .65rem; background: var(--soft, #eeeee3); border-radius: .6rem; padding: .8rem; }
+.hazard-preview:empty { display: none; }
+.hazard-dialog footer { display: flex; align-items: center; gap: .65rem; flex-wrap: wrap; }
+.hazard-dialog footer a { margin-right: auto; }
+@media (max-width: 600px) { .hazard-targets fieldset { grid-template-columns: 1fr; } }

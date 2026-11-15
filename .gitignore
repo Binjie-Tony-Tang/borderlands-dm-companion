@@ -1,0 +1,45 @@
+# Private source material and content adapters (not part of this source release).
+/database/*
+!/database/README.md
+/Official Box/
+/tmp/
+/archive/
+/encounter_scaling/data/
+/library_translations/*
+!/library_translations/README.md
+/character_page/classes.js
+/character_page/origins.js
+/character_page/items-spells.js
+/character_page/adventure-catalog.js
+/character_page/level-data.json
+/combat_page/actions.js
+/combat_page/monsters-fixed.js
+/combat_page/monsters-ordinary.js
+/keep_page/content.js
+/adventure_page/private-config.js
+/adventure_page/wilderness.js
+/adventure_page/caves-early.js
+/adventure_page/caves-late.js
+/adventure_page/intro.js
+/adventure_page/hazards.js
+/adventure_page/companions.js
+
+# Personal saves, credentials and machine state.
+/local_data/
+**/lorekeeper.txt
+.env
+.env.*
+*.pem
+*.key
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+.pytest_cache/
+.DS_Store
+._*
+__MACOSX/
+*.zip
+*.zip.sha256
+TRANSFER-MANIFEST*.json
