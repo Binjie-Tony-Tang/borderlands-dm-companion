@@ -2,6 +2,8 @@
 
 A local dashboard for a human Dungeon Master running a cooperative, physical-table game for **4–8 players**.
 
+**Download:** [Latest release](https://github.com/Binjie-Tony-Tang/borderlands-dm-companion/releases/latest). The release includes a public source ZIP, checksum and setup notes; compatible private content and adapters are required for the full dashboard.
+
 This project began as a practical way for a new DM to keep character sheets, encounter preparation, rules references and session bookkeeping within reach. The private application uses the **Heroes of the Borderlands** starter set as its starting point, with a separately documented set of attendance adjustments for a larger group.
 
 The DM still runs the game: players choose their actions, people roll physical dice, miniatures move on the table, and the DM decides what happens in the fiction. The dashboard records choices and rolls, calculates supported consequences, and makes relevant information easier to find. Its optional Lorekeeper offers reference-based explanations and clearly identified advice.
